@@ -1,5 +1,5 @@
 const express = require('express');
-const route = express.Router()
+const router = express.Router()
 const moviesController = require('../controllers/movie')
 const { validateToken } = require('../middleware/validate')
 
