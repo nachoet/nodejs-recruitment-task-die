@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-recruitment-task-die",
+  "version": "1.0.0",
+  "description": "nodejs microservices",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nachoet/nodejs-recruitment-task-die.git"
+  },
+  "author": "nachoet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nachoet/nodejs-recruitment-task-die/issues"
+  },
+  "homepage": "https://github.com/nachoet/nodejs-recruitment-task-die#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.0",
+    "jwtoken": "^0.0.0",
+    "mongoose": "^6.3.1"
+  }
+}
