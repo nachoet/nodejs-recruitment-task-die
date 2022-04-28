@@ -1,0 +1,51 @@
+version: "3.6"
+services:
+  auth_service:
+    command: node src/server.js
+    container_name: auth-service
+    build:
+      context: ./src/auth_service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src/auth_service/:/app
+    env_file:
+      - ./.env
+  movies_service:
+    command: npm run dev
+    container_name: movies_service
+    build:
+      context: ./src/movies_service
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./src/movies_service/:/app
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo-db
+      - auth_service
+  mongo-db:
+    image: mongo:latest
+    container_name: mongo-microservice
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    env_file:
+      - .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=1234
+      - MONGO_INITDB_DATABASE=movies
+    volumes:
+      - mongodb_data_container:/data/db
+      - mongodb_config:/data/configdb
+      - ./movies_service/docker-mongo-script/:/docker-entrypoint-initdb.d
+
+volumes:
+  mongodb_data_container:
+  auth_node_moduels:
+  movie_node_moduels:
+  mongodb_config:

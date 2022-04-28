@@ -1,11 +1,13 @@
 FROM node:14.15-alpine
 
-WORKDIR /app
+RUN mkdir -p /usr/src/app
 
-COPY ./package.json ./package-lock.json ./
+WORKDIR /usr/src/app
+
+COPY . .
+
 RUN npm install
 
-RUN mkdir ./src
-COPY ./src ./src
+EXPOSE 3000:3000
 
 CMD ["node", "./src/server.js"]
