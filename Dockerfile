@@ -1,8 +1,8 @@
 FROM node:14.15-alpine
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /app
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY . .
 
