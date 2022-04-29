@@ -2,17 +2,18 @@ version: "3.6"
 services:
   auth_service:
     command: node src/server.js
-    container_name: auth-service
+    container_name: auth_service
     build:
       context: ./auth_service
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
     volumes:
-      - ./src/auth_service/:/app
-      - ./auth_node_modules/:/app/node_modules
+      - ./auth_service/:/app
+      - auth_node_modules/:/app/node_modules
     env_file:
-      - .env
+      - ./auth_service/.env
+
   movies_service:
     command: npm run dev
     container_name: movies_service
@@ -22,8 +23,8 @@ services:
     ports:
       - "3001:3000"
     volumes:
-      - ./src/movies_service/:/app
-      - ./movie_node_modules/:/app/node_modules
+      - ./movies_service/:/app
+      - movie_node_modules/:/app/node_modules
     env_file:
       - ./movies_service/.env
     depends_on:
