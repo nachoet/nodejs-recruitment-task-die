@@ -9,7 +9,7 @@ const movieRoutes = require('../routes/movies.routes')
 dotenv.config();
 
 if (process.env.NODE_ENV !== 'test') {
-    require('../config/db')
+    require('../db/mongodb')
 }
 
 const JWT_SECRET = process.env.JWT_SECRET;
